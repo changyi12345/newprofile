@@ -80,6 +80,23 @@ footer {
     margin-top: auto;
 }
 
+/* Fix for Admin Layout hiding header */
+body:not(.admin-page) header {
+    display: block;
+}
+body:not(.admin-page) footer {
+    display: block;
+}
+
+/* Admin Layout */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+/* ... existing admin styles ... */
+body.admin-page header { display: none; }
+body.admin-page footer { display: none; }
+
 /* Sections */
 .section-title {
     text-align: center;
@@ -236,12 +253,16 @@ form input:focus, form textarea:focus, form select:focus {
     overflow-y: auto;
 }
 
-/* Remove old admin styles */
+/* Remove old admin styles - MODIFIED to be more specific */
 .admin-nav { display: none; }
-header { display: none; } /* Hide default header in admin */
-body.admin-page { display: block; } /* Reset flex for admin page if needed */
-body.admin-page header { display: none; }
-body.admin-page footer { display: none; }
+
+/* Only hide header/footer on admin pages explicitly */
+body.admin-page header { display: none !important; }
+body.admin-page footer { display: none !important; }
+
+/* Ensure header is visible on normal pages */
+header { display: block; }
+footer { display: block; }
 
 /* Admin Cards */
 .admin-card {
