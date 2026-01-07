@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        /* Dark Mode Toggle - Green Accent */
+        input:checked + .slider {
+            background-color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">MyPortfolio</a>
+            <ul style="align-items: center;">
+                <li><a href="/" class="<%= typeof page !== 'undefined' && page === 'home' ? 'active' : '' %>">Home</a></li>
+                <li><a href="/about" class="<%= typeof page !== 'undefined' && page === 'about' ? 'active' : '' %>">About</a></li>
+                <li><a href="/skills" class="<%= typeof page !== 'undefined' && page === 'skills' ? 'active' : '' %>">Skills</a></li>
+                <li><a href="/projects" class="<%= typeof page !== 'undefined' && page === 'projects' ? 'active' : '' %>">Projects</a></li>
+                <li><a href="/experience" class="<%= typeof page !== 'undefined' && page === 'experience' ? 'active' : '' %>">Experience</a></li>
+                <li><a href="/contact" class="<%= typeof page !== 'undefined' && page === 'contact' ? 'active' : '' %>">Contact</a></li>
+                
+                <!-- Dark Mode Toggle -->
+                <li class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-page">
+    <div class="admin-container">
+        <%- include('../partials/admin-sidebar') %>
+        
+        <div class="admin-content">
+            <h2 class="section-title">Dashboard</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-home"></i>
+                    <div class="number">Hero</div>
+                    <div class="label">Section</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <div class="number">Projects</div>
+                    <div class="label">Portfolio</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code"></i>
+                    <div class="number">Skills</div>
+                    <div class="label">Tech Stack</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="number">Experience</div>
+                    <div class="label">Timeline</div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="admin-card">
+                    <h3><i class="fas fa-home"></i> Home/Hero</h3>
+                    <p>Edit main titles and CTAs.</p>
+                    <a href="/admin/hero" class="btn">Edit Hero</a>
+                </div>
+
+                <div class="admin-card">
+                    <h3><i class="fas fa-user"></i> About Me</h3>
+                    <p>Manage your bio and profile.</p>
+                    <a href="/admin/about" class="btn">Edit About</a>
+                </div>
+
+                <div class="admin-card">
+                    <h3><i class="fas fa-code"></i> Skills</h3>
+                    <p>Add or remove skills.</p>
+                    <a href="/admin/skills" class="btn">Manage Skills</a>
+                </div>
+
+                <div class="admin-card">
+                    <h3><i class="fas fa-project-diagram"></i> Projects</h3>
+                    <p>Showcase your work.</p>
+                    <a href="/admin/projects" class="btn">Manage Projects</a>
+                </div>
+                
+                <div class="admin-card">
+                    <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                    <p>Update your career journey.</p>
+                    <a href="/admin/experience" class="btn">Manage Experience</a>
+                </div>
+
+                <div class="admin-card">
+                    <h3><i class="fas fa-envelope"></i> Contact</h3>
+                    <p>Update contact info & social links.</p>
+                    <a href="/admin/contact" class="btn">Edit Contact</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                 <a href="http://localhost:3000" target="_blank" class="btn" style="background: #27ae60;">View Live Site <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

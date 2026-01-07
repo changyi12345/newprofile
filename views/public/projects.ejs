@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<h2 class="section-title" data-aos="fade-up">Projects</h2>
+
+<div class="grid">
+    <% if (projects.length > 0) { %>
+        <% projects.forEach((project, index) => { %>
+            <div class="card" data-aos="fade-up" data-aos-delay="<%= index * 150 %>">
+                <% if (project.image) { %>
+                    <div style="overflow: hidden; border-radius: 4px; margin-bottom: 1rem;">
+                        <img src="<%= project.image %>" alt="<%= project.title %>" style="width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                <% } %>
+                <h3><%= project.title %></h3>
+                <p><%= project.description %></p>
+                
+                <div style="margin: 1rem 0;">
+                    <% project.techStack.forEach(tech => { %>
+                        <span style="background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px;"><%= tech %></span>
+                    <% }) %>
+                </div>
+
+                <div style="margin-top: auto;">
+                    <% if (project.githubLink) { %>
+                        <a href="<%= project.githubLink %>" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    <% } %>
+                    <% if (project.liveDemo) { %>
+                        <a href="<%= project.liveDemo %>" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    <% } %>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>No projects added yet.</p>
+    <% } %>
+</div>
+
+<style>
+    .card img:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+<%- include('../partials/footer') %>
