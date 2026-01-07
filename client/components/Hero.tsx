@@ -32,6 +32,7 @@ export default function Hero() {
     const primaryCtaText = hero?.primaryCtaText || "View My Work";
     const secondaryCtaText = hero?.secondaryCtaText || "Contact Me";
     // Force cast hero to any to bypass type check for heroImage property if interface update is lagging
+    // Vercel build fix attempt: explicit any cast
     const heroImage = (hero as any)?.heroImage ? `http://localhost:5000${(hero as any).heroImage}` : undefined;
 
     return (
