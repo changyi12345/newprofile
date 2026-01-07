@@ -8,6 +8,18 @@ const cors = require('cors');
 
 const app = express();
 
+// View Engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Connect to Database
 // connectDB(); // Removed immediate call
 
@@ -21,14 +33,6 @@ app.use(async (req, res, next) => {
         res.status(500).json({ error: "Database Connection Failed" });
     }
 });
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
