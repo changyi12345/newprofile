@@ -17,7 +17,7 @@ export default function Hero() {
                     transition={{ delay: 0.1, duration: 0.5 }}
                     className="text-primary font-medium tracking-wide mb-4"
                 >
-                    Hi, I'm a Full Stack Developer
+                    Hi, I&apos;m a Full Stack Developer
                 </motion.p>
 
                 <motion.h1
