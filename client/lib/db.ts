@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
+const MONGODB_DB_NAME = process.env.MONGO_DB_NAME || 'portfolio_db';
 
 if (!MONGODB_URI) {
   throw new Error(
@@ -34,6 +35,7 @@ async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      dbName: MONGODB_DB_NAME,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((m) => {
