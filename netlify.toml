@@ -9,9 +9,13 @@
   NPM_FLAGS = "--legacy-peer-deps"
   # Try to force npm
   NETLIFY_USE_NPM = "true"
+  # Default NEXTAUTH_URL (will be overridden by Netlify UI if set)
+  NEXTAUTH_URL = "https://localhost:3000"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    # Configure plugin inputs if needed
 
 [functions]
   node_bundler = "esbuild"
