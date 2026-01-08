@@ -62,6 +62,19 @@ You need to set these environment variables in your Netlify dashboard:
 
 ## Troubleshooting
 
+### Build Fails with Node Version Error
+- Make sure Node version is set to 20 in Netlify settings
+- The `.nvmrc` file specifies Node 20
+- Check that `package.json` has engines field set to Node 20
+
+### Build Fails with Yarn/Incompatible Dependencies
+- If you see errors about Yarn or incompatible modules (like @nuxt/kit):
+  1. Make sure there's NO `yarn.lock` file in your repository
+  2. Delete `yarn.lock` if it exists: `git rm yarn.lock`
+  3. The `netlify.toml` is configured to use npm, not Yarn
+  4. Make sure `package-lock.json` is committed to git
+
+### Other Issues
 - If build fails, check that all environment variables are set
 - If database connection fails, verify your MongoDB connection string
 - If authentication doesn't work, check that `NEXTAUTH_URL` matches your site URL exactly
