@@ -5,7 +5,7 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20.18.0"
+  NODE_VERSION = "20.21.0"
   NPM_FLAGS = "--legacy-peer-deps"
   # Try to force npm
   NETLIFY_USE_NPM = "true"
