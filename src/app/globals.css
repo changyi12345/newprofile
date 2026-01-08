@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-green: #22c55e;
+  --color-neon-blue: #3b82f6;
+  --color-neon-red: #ef4444;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 142 70% 50%;
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+@layer utilities {
+  .text-shadow-neon {
+    text-shadow: 0 0 10px currentColor;
+  }
+}

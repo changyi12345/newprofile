@@ -1,30 +1,41 @@
 {
-  "name": "profile-webapp",
-  "version": "1.0.0",
-  "description": "Portfolio Web App",
-  "main": "server.js",
+  "name": "portflio",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm run dev --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "^5.15.0",
     "bcryptjs": "^3.0.3",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "firebase": "^12.7.0",
-    "firebase-admin": "^13.6.0",
-    "jsonwebtoken": "^9.0.2",
-    "method-override": "^3.0.0",
-    "mongoose": "^8.0.3",
-    "multer": "^2.0.2"
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.24.10",
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.562.0",
+    "mongoose": "^9.1.2",
+    "next": "16.1.1",
+    "next-auth": "^4.24.13",
+    "next-themes": "^0.4.6",
+    "prisma": "^5.15.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1",
-    "nodemon": "^3.1.11"
+    "@netlify/plugin-nextjs": "^4.41.4",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
   }
 }
