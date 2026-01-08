@@ -9,11 +9,10 @@
   NPM_FLAGS = "--legacy-peer-deps"
   # Try to force npm
   NETLIFY_USE_NPM = "true"
-  # CRITICAL: NEXTAUTH_URL must be set in Netlify UI for the plugin to work
-  # The plugin reads this during onBuild event, so it must be available
-  # Set in Netlify UI: Site settings → Build & deploy → Environment
-  # Use your actual Netlify site URL (e.g., https://profilechan.netlify.app)
-  NEXTAUTH_URL = "https://placeholder.netlify.app"
+  # NEXTAUTH_URL must be set in Netlify UI (Site settings → Build & deploy → Environment)
+  # Do not hardcode it here to avoid secrets scanning issues
+  # Configure secrets scanning to ignore NEXTAUTH_URL (it's not a secret, just a URL)
+  SECRETS_SCAN_OMIT_KEYS = "NEXTAUTH_URL"
 
 [functions]
   node_bundler = "esbuild"
