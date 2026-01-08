@@ -20,6 +20,24 @@ You need to set these environment variables in your Netlify dashboard:
 
 ## Deployment Steps
 
+### IMPORTANT: Before Deploying
+
+1. **Delete yarn.lock from GitHub** (if it exists):
+   ```bash
+   git rm yarn.lock
+   git commit -m "Remove yarn.lock to force npm usage"
+   git push
+   ```
+
+2. **Ensure package-lock.json is committed**:
+   ```bash
+   git add package-lock.json
+   git commit -m "Add package-lock.json"
+   git push
+   ```
+
+### Deployment
+
 1. **Install Netlify CLI** (optional, for local testing):
    ```bash
    npm install -g netlify-cli
@@ -36,6 +54,8 @@ You need to set these environment variables in your Netlify dashboard:
      - Go to https://app.netlify.com
      - Click "Add new site" → "Import an existing project"
      - Connect your GitHub repository
+     - **IMPORTANT**: Go to Site settings → Build & deploy → Environment
+     - Set `NODE_VERSION` to `20` (this is critical!)
      - Netlify will automatically detect the settings from `netlify.toml`
    
    - Option B: Deploy via Netlify CLI:
@@ -48,6 +68,7 @@ You need to set these environment variables in your Netlify dashboard:
    - Go to Site settings → Environment variables
    - Add all three variables mentioned above
    - Make sure to set `NEXTAUTH_URL` to your actual Netlify URL
+   - **Set `NODE_VERSION` to `20`** if not already set
 
 5. **Redeploy** after setting environment variables:
    - Go to Deploys tab
@@ -69,10 +90,23 @@ You need to set these environment variables in your Netlify dashboard:
 
 ### Build Fails with Yarn/Incompatible Dependencies
 - If you see errors about Yarn or incompatible modules (like @nuxt/kit):
-  1. Make sure there's NO `yarn.lock` file in your repository
-  2. Delete `yarn.lock` if it exists: `git rm yarn.lock`
-  3. The `netlify.toml` is configured to use npm, not Yarn
-  4. Make sure `package-lock.json` is committed to git
+  1. **CRITICAL**: Make sure there's NO `yarn.lock` file in your GitHub repository
+  2. Delete `yarn.lock` from GitHub: 
+     ```bash
+     git rm yarn.lock
+     git commit -m "Remove yarn.lock"
+     git push
+     ```
+  3. Make sure `package-lock.json` is committed to git
+  4. In Netlify UI: Site settings → Build & deploy → Environment → Set `NODE_VERSION` to `20`
+  5. The `netlify.toml` build command will delete yarn.lock and use npm, but Netlify might still detect it during install phase
+
+### Build Uses Wrong Node Version (v22 instead of v20)
+- **Solution 1**: In Netlify UI, go to Site settings → Build & deploy → Environment
+  - Add environment variable: `NODE_VERSION` = `20`
+  - Or edit existing `NODE_VERSION` to be exactly `20`
+  
+- **Solution 2**: The `.nvmrc` and `.node-version` files should help, but UI setting takes precedence
 
 ### Other Issues
 - If build fails, check that all environment variables are set
