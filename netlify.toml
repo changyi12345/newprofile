@@ -6,6 +6,10 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Force npm plugin (local)
+[[plugins]]
+  package = "./netlify/plugins/force-npm.js"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
