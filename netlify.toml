@@ -1,7 +1,7 @@
 [build]
   base = ""
-  # Set NEXTAUTH_URL default and build
-  command = "rm -f yarn.lock && npm install --legacy-peer-deps && export NEXTAUTH_URL=${DEPLOY_PRIME_URL:-https://localhost:3000} && npm run build"
+  # Build command - ensure it runs Next.js build
+  command = "rm -f yarn.lock && npm install --legacy-peer-deps && npm run build"
   publish = ".next"
 
 [build.environment]
@@ -9,8 +9,10 @@
   NPM_FLAGS = "--legacy-peer-deps"
   # Try to force npm
   NETLIFY_USE_NPM = "true"
-  # Default NEXTAUTH_URL - will be overridden by Netlify UI environment variable if set
-  # Replace with your actual site URL in Netlify UI
+  # CRITICAL: NEXTAUTH_URL must be set in Netlify UI for the plugin to work
+  # The plugin reads this during onBuild event, so it must be available
+  # Set in Netlify UI: Site settings → Build & deploy → Environment
+  # Use your actual Netlify site URL (e.g., https://profilechan.netlify.app)
   NEXTAUTH_URL = "https://placeholder.netlify.app"
 
 [[plugins]]
