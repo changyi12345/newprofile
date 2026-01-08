@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onDrag" | "onDragStart" | "onDragEnd"> {
   variant?: "primary" | "outline" | "ghost"
   size?: "sm" | "md" | "lg"
 }
@@ -24,6 +24,9 @@ export const buttonSizes = {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
+    // Extract conflicting props to avoid type conflicts
+    const { onDrag, onDragStart, onDragEnd, onAnimationStart, ...restProps } = props as any
+    
     return (
       <motion.button
         ref={ref}
@@ -35,7 +38,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonSizes[size],
           className
         )}
-        {...props}
+        {...restProps}
       >
         {children}
       </motion.button>
