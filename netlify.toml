@@ -1,7 +1,7 @@
 [build]
   base = ""
-  # Delete yarn.lock first, then install with npm, then build
-  command = "rm -f yarn.lock && npm install --legacy-peer-deps && npm run build"
+  # Set NEXTAUTH_URL default and build
+  command = "rm -f yarn.lock && npm install --legacy-peer-deps && export NEXTAUTH_URL=${DEPLOY_PRIME_URL:-https://localhost:3000} && npm run build"
   publish = ".next"
 
 [build.environment]
@@ -9,13 +9,12 @@
   NPM_FLAGS = "--legacy-peer-deps"
   # Try to force npm
   NETLIFY_USE_NPM = "true"
-  # Default NEXTAUTH_URL (will be overridden by Netlify UI if set)
-  NEXTAUTH_URL = "https://localhost:3000"
+  # Default NEXTAUTH_URL - will be overridden by Netlify UI environment variable if set
+  # Replace with your actual site URL in Netlify UI
+  NEXTAUTH_URL = "https://placeholder.netlify.app"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    # Configure plugin inputs if needed
 
 [functions]
   node_bundler = "esbuild"
