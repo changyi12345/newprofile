@@ -23,7 +23,7 @@ type Cached = {
   promise: Promise<typeof mongoose> | null;
 };
 
-let cached: Cached = global.mongooseCache ?? { conn: null, promise: null };
+const cached: Cached = global.mongooseCache ?? { conn: null, promise: null };
 global.mongooseCache = cached;
 
 async function connectDB() {
